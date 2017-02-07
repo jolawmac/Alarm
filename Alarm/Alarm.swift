@@ -56,7 +56,7 @@ class Alarm: Equatable{
 }
 
 func ==(lhs: Alarm, rhs: Alarm) -> Bool {
-    return lhs.uuid == rhs.uuid
+    return lhs === rhs
 }
 
 

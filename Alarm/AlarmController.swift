@@ -10,22 +10,37 @@ import Foundation
 
 class AlarmController {
     
-    var alarmArray: [Alarm] = []
+    var alarms: [Alarm] = []
     
     static let shared = AlarmController()
     
     
     func addAlarm(fireTimeFromMidnight: TimeInterval, name: String) {
         let alarm = Alarm(fireTimeFromMidnight: fireTimeFromMidnight, name: name)
-        alarmArray.append(alarm)
+        alarms.append(alarm)
     }
     
     func delete(alarm: Alarm) {
-        if let index = alarmArray.index(of: alarm) {
-            alarmArray.remove(at: index)
+        if let index = alarms.index(of: alarm) {
+            alarms.remove(at: index)
         }
     }
     
+    func toggleEnabled(for alarm: Alarm) {
+        alarm.enabled = !alarm.enabled
+    }
+    
+    
+    // Mock Data: 
+    
+//    
+//    init() {
+//        let josh = Alarm(fireTimeFromMidnight: 25200, name: "Josh", enabled: true, uuid: "0001")
+//        let morningRun = Alarm(fireTimeFromMidnight: 25200, name: "Morning Run", enabled: true, uuid: "0002")
+//        
+//        
+//        alarms = [josh, morningRun]
+//    }
     
     
 }

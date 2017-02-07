@@ -8,15 +8,32 @@
 
 import UIKit
 
+//Pro
+protocol SwitchTableViewCellDelegate: class {
+    func switchCellSwitchValueChanged(cell: SwitchTableViewCell, enabled: Bool)
+    
+//Class
+}
+
 class SwitchTableViewCell: UITableViewCell {
+    
+    weak var delegate: SwitchTableViewCellDelegate?
 
     @IBOutlet weak var timeLabel: UILabel!
-    
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var alarmSwitch: UISwitch!
     
+    var alarm: Alarm? {
+        didSet {
+            guard let alarm = alarm else { return }
+            timeLabel.text = alarm.fireTimeAsString
+            nameLabel.text = alarm.name
+            alarmSwitch.isOn = alarm.enabled
+        }
+    }
+    
     @IBAction func switchValueChanged(_ sender: Any) {
+        delegate?.switchCellSwitchValueChanged(cell: self, enabled: alarmSwitch.isOn)
     }
     
     
@@ -30,5 +47,7 @@ class SwitchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

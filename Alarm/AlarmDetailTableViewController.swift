@@ -21,6 +21,38 @@ class AlarmDetailTableViewController: UITableViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
     }
     
+    private func updateViews() {
+        guard let alarm = alarm,
+            let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else {
+                enableDisableButtonTapped.isHidden = true
+                return
+        }
+            
+        datePicker.setDate(Date(timeInterval: alarm.fireTimeFromMidnight, since: thisMorningAtMidnight), animated: false)
+        alarmTitleTextField.text = alarm.name
+            
+        enableDisableButtonTapped.isHidden = false
+        if alarm.enabled {
+            enableDisableButtonTapped.setTitle("Disable", for: UIControlState())
+            enableDisableButtonTapped.setTitleColor(.white, for: UIControlState())
+            enableDisableButtonTapped.backgroundColor = .red
+        } else {
+            enableDisableButtonTapped.setTitle("Enable", for: UIControlState())
+            enableDisableButtonTapped.setTitleColor(.blue, for: UIControlState())
+            enableDisableButtonTapped.backgroundColor = .gray
+        }
+        
+        self.title = alarm.name
+        }
+        
+    // MARK: Properties
+        
+    var alarm: Alarm? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
