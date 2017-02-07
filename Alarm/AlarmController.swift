@@ -34,13 +34,13 @@ class AlarmController {
     // Mock Data: 
     
 //    
-//    init() {
-//        let josh = Alarm(fireTimeFromMidnight: 25200, name: "Josh", enabled: true, uuid: "0001")
-//        let morningRun = Alarm(fireTimeFromMidnight: 25200, name: "Morning Run", enabled: true, uuid: "0002")
-//        
-//        
-//        alarms = [josh, morningRun]
-//    }
+    init() {
+        let josh = Alarm(fireTimeFromMidnight: 25200, name: "Josh", enabled: true, uuid: "0001")
+        let morningRun = Alarm(fireTimeFromMidnight: 25200, name: "Morning Run", enabled: true, uuid: "0002")
+        
+        
+        alarms = [josh, morningRun]
+    }
     
     
 }

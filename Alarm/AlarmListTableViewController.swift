@@ -85,9 +85,17 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == "toAlarmEditor" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let detailsVC = AlarmController.shared.alarms[indexPath.row]
+                if let alarmsTVC = segue.destination as? AlarmDetailTableViewController{
+                    alarmsTVC.alarm = detailsVC 
+                }
+            }
+        
     }
  }
+}
  
 
