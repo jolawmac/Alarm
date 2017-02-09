@@ -12,10 +12,10 @@
 		1A0FB7861CDD4F07006808D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0FB7851CDD4F07006808D9 /* Assets.xcassets */; };
 		1A0FB7891CDD4F07006808D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0FB7871CDD4F07006808D9 /* LaunchScreen.storyboard */; };
 		1A0FB7BF1CE19229006808D9 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0FB7BE1CE19229006808D9 /* DateHelper.swift */; };
-		73BDA4EE1E491C110001B53E /* AlarmDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDA4ED1E491C110001B53E /* AlarmDetailTableViewController.swift */; };
 		73BDA4F01E491CD10001B53E /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDA4EF1E491CD10001B53E /* SwitchTableViewCell.swift */; };
 		73BDA4F21E49275D0001B53E /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDA4F11E49275D0001B53E /* Alarm.swift */; };
 		73BDA4F41E492E5A0001B53E /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDA4F31E492E5A0001B53E /* AlarmController.swift */; };
+		73CE7B581E49764600538BB6 /* AlarmDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CE7B571E49764600538BB6 /* AlarmDetailTableViewController.swift */; };
 		73D8B63C1E49188E00AD2605 /* AlarmListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D8B63B1E49188E00AD2605 /* AlarmListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,10 +27,10 @@
 		1A0FB7881CDD4F07006808D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0FB78A1CDD4F07006808D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A0FB7BE1CE19229006808D9 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		73BDA4ED1E491C110001B53E /* AlarmDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmDetailTableViewController.swift; sourceTree = "<group>"; };
 		73BDA4EF1E491CD10001B53E /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		73BDA4F11E49275D0001B53E /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		73BDA4F31E492E5A0001B53E /* AlarmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
+		73CE7B571E49764600538BB6 /* AlarmDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		73D8B63B1E49188E00AD2605 /* AlarmListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,6 +48,7 @@
 		1A0FB7721CDD4F07006808D9 = {
 			isa = PBXGroup;
 			children = (
+				1A0FB7821CDD4F07006808D9 /* Main.storyboard */,
 				1A0FB77D1CDD4F07006808D9 /* Alarm */,
 				1A0FB77C1CDD4F07006808D9 /* Products */,
 			);
@@ -64,8 +65,6 @@
 		1A0FB77D1CDD4F07006808D9 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				1A0FB77E1CDD4F07006808D9 /* AppDelegate.swift */,
-				1A0FB7BE1CE19229006808D9 /* DateHelper.swift */,
 				1A0FB7C51CE2CD93006808D9 /* Models */,
 				1A0FB7C31CE2CD7F006808D9 /* Controllers */,
 				1A0FB7C21CE2CD6C006808D9 /* View Controllers */,
@@ -78,8 +77,8 @@
 		1A0FB7C21CE2CD6C006808D9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				73BDA4ED1E491C110001B53E /* AlarmDetailTableViewController.swift */,
 				73D8B63B1E49188E00AD2605 /* AlarmListTableViewController.swift */,
+				73CE7B571E49764600538BB6 /* AlarmDetailTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -95,7 +94,6 @@
 		1A0FB7C41CE2CD84006808D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A0FB7821CDD4F07006808D9 /* Main.storyboard */,
 				73BDA4EF1E491CD10001B53E /* SwitchTableViewCell.swift */,
 			);
 			name = Views;
@@ -112,6 +110,8 @@
 		9DBA79281D90621B00D59217 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A0FB7BE1CE19229006808D9 /* DateHelper.swift */,
+				1A0FB77E1CDD4F07006808D9 /* AppDelegate.swift */,
 				1A0FB7851CDD4F07006808D9 /* Assets.xcassets */,
 				1A0FB7871CDD4F07006808D9 /* LaunchScreen.storyboard */,
 				1A0FB78A1CDD4F07006808D9 /* Info.plist */,
@@ -195,7 +195,7 @@
 				1A0FB77F1CDD4F07006808D9 /* AppDelegate.swift in Sources */,
 				73D8B63C1E49188E00AD2605 /* AlarmListTableViewController.swift in Sources */,
 				73BDA4F01E491CD10001B53E /* SwitchTableViewCell.swift in Sources */,
-				73BDA4EE1E491C110001B53E /* AlarmDetailTableViewController.swift in Sources */,
+				73CE7B581E49764600538BB6 /* AlarmDetailTableViewController.swift in Sources */,
 				1A0FB7BF1CE19229006808D9 /* DateHelper.swift in Sources */,
 				73BDA4F21E49275D0001B53E /* Alarm.swift in Sources */,
 				73BDA4F41E492E5A0001B53E /* AlarmController.swift in Sources */,
@@ -211,6 +211,7 @@
 				1A0FB7831CDD4F07006808D9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Alarm;
 			sourceTree = "<group>";
 		};
 		1A0FB7871CDD4F07006808D9 /* LaunchScreen.storyboard */ = {
@@ -318,6 +319,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 357NQPN89X;
 				INFOPLIST_FILE = Alarm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmountain.Alarm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -331,6 +333,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 357NQPN89X;
 				INFOPLIST_FILE = Alarm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmountain.Alarm;
 				PRODUCT_NAME = "$(TARGET_NAME)";

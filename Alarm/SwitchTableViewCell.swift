@@ -31,7 +31,6 @@ class SwitchTableViewCell: UITableViewCell {
             alarmSwitch.isOn = alarm.enabled
         }
     }
-    
     @IBAction func switchValueChanged(_ sender: Any) {
         delegate?.switchCellSwitchValueChanged(cell: self, enabled: alarmSwitch.isOn)
     }
@@ -41,13 +40,5 @@ class SwitchTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    
-
 }

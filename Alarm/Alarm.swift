@@ -8,40 +8,39 @@
 
 import Foundation
 
-class Alarm: Equatable{
+
+class Alarm: NSObject, NSCoding {
     
-    private let FireTimeFromMidnightKey = "fireTimeFromMidnight"
-    private let Namekey = "name"
-    private let EnableKey = "enableKey"
+    private let fireTimeKey = "fireTime"
+    private let nameKey = "name"
+    private let enabledKey = "enabled"
     private let UUIDKey = "UUID"
     
-    var fireTimeFromMidnight: TimeInterval
+    var fireTime: TimeInterval
     var name: String
     var enabled: Bool
     let uuid: String
     
-    init(fireTimeFromMidnight: TimeInterval, name: String, enabled: Bool = true, uuid: String = UUID().uuidString){
-        
-        self.fireTimeFromMidnight = fireTimeFromMidnight
+    init(fireTime: TimeInterval, name: String, enabled: Bool = true, uuid: String = UUID().uuidString) {
+        self.fireTime = fireTime
         self.name = name
         self.enabled = enabled
         self.uuid = uuid
-        
     }
     
     
-    
+    // Given to us:
     
     var fireDate: Date? {
-        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else {return nil}
-        let fireDateFromThisMorning = Date(timeInterval: fireTimeFromMidnight, since: thisMorningAtMidnight as Date)
+        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else { return nil }
+        let fireDateFromThisMorning = Date(timeInterval: fireTime, since: thisMorningAtMidnight as Date)
         return fireDateFromThisMorning
     }
     
     var fireTimeAsString: String {
-        let fireTimeFromMidnight = Int(self.fireTimeFromMidnight)
-        var hours = fireTimeFromMidnight/60/60
-        let minutes = (fireTimeFromMidnight - (hours*60*60))/60
+        let fireTime = Int(self.fireTime)
+        var hours = fireTime/60/60
+        let minutes = (fireTime - (hours*60*60))/60
         if hours >= 13 {
             return String(format: "%2d:%02d PM", arguments: [hours - 12, minutes])
         } else if hours >= 12 {
@@ -53,15 +52,33 @@ class Alarm: Equatable{
             return String(format: "%2d:%02d AM", arguments: [hours, minutes])
         }
     }
+    
+    
+    // Failable int: 
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        guard let name = aDecoder.decodeObject(forKey: nameKey) as? String,
+            let uuid = aDecoder.decodeObject(forKey: UUIDKey) as? String else { return nil }
+        
+        self.fireTime = TimeInterval(aDecoder.decodeDouble(forKey: fireTimeKey))
+        self.name = name
+        self.enabled = aDecoder.decodeBool(forKey: enabledKey)
+        self.uuid = uuid
+    }
+    
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(fireTime, forKey: fireTimeKey)
+        aCoder.encode(name, forKey: nameKey)
+        aCoder.encode(enabled, forKey: enabledKey)
+        aCoder.encode(uuid, forKey: UUIDKey)
+    }
+    
 }
+
+// Equatable outside the class
 
 func ==(lhs: Alarm, rhs: Alarm) -> Bool {
-    return lhs === rhs
+    return lhs.uuid == rhs.uuid
 }
-
-
-
-
-
-
-

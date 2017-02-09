@@ -8,15 +8,19 @@
 
 import UIKit
 
-class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDelegate {
+
+class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDelegate, AlarmScheduler {
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
-       // MARK: - Table view data source
 
-   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return AlarmController.shared.alarms.count
@@ -33,6 +37,17 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let alarm = AlarmController.shared.alarms[indexPath.row]
+            AlarmController.shared.delete(alarm: alarm)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    
 
     func switchCellSwitchValueChanged(cell: SwitchTableViewCell, enabled: Bool) {
         guard let alarm = cell.alarm,
@@ -44,42 +59,7 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            let alarm = AlarmController.shared.alarms[indexPath.row]
-            AlarmController.shared.delete(alarm: alarm)
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -94,8 +74,11 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
                 }
             }
         
+        }
     }
- }
 }
+
+
+
  
 
